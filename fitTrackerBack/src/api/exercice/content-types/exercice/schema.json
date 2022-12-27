@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "exercices",
+  "info": {
+    "singularName": "exercice",
+    "pluralName": "exercices",
+    "displayName": "exercice",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nom": {
+      "type": "string"
+    },
+    "muscleCible": {
+      "type": "enumeration",
+      "enum": [
+        "pectoraux",
+        "triceps",
+        "biceps",
+        "dos",
+        "ischio",
+        "quadriceps",
+        "epaules"
+      ]
+    }
+  }
+}
