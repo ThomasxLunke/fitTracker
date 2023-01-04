@@ -1,41 +1,9 @@
-html, body {
-    padding: 0;
-    margin: 0;
-}
-
-*,*:before, *:after {
-    box-sizing: border-box;
-}
-
-h1{
-    margin: 0;
-    text-align: center;
-}
-
-article{
-    padding-top: 6em;
-    text-align: center;
-    
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* Position and sizing of burger button */
 .bm-burger-button {
     position: fixed;
-    width: 24px;
-    height: 20px;
-    left: 36px;
+    width: 22px;
+    height: 18px;
+    left: 20px;
     top: 36px;
 }
 
@@ -110,5 +78,3 @@ padding-left: 3em;
 .bm-overlay {
 background: rgba(0, 0, 0, 0.3);
 }
-
-
