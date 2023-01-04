@@ -9,8 +9,8 @@ function Exercices() {
     const exercices = resultsExercices?.data?.data ?? [];
     
     return (
-        <div className='container-exercices'>
-            <h1>Exercices</h1>
+        <div className='bg-orange-100 w-1/2 mr-auto ml-auto'>
+            <h1 className='text-center text-4xl font-bold pb-7 pt-12'>Exercices</h1>
             <div>
                 {   
                     exercices.map((exercice) => (

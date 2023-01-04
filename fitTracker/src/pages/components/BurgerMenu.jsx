@@ -17,6 +17,7 @@ function BurgerMenu() {
                 <Link onClick={() => { setMenuOpen(false) }} to="/programmes">Programmes</Link>
                 <Link onClick={() => { setMenuOpen(false) }} to="/seances">Séances</Link>
                 <Link onClick={() => { setMenuOpen(false) }} to="/exercices">Exercices</Link>
+                <Link onClick={() => { setMenuOpen(false) }} to="/home-page">Home Page</Link>
             </Menu>
         </div>
     );
