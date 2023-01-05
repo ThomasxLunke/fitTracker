@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios';
 
 import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
@@ -24,22 +25,33 @@ const queryClient = new QueryClient({
   }
 })
 
+function isLoggedIn(){
+  if (axios.defaults.headers.common['Authorization'])
+  {
+    return true
+  }
+  return false
+
+}
+
 const App = () => {
   return (
     <div className="w-100%">
       
         <BrowserRouter>
           <QueryClientProvider client={queryClient}>
-            <BurgerMenu />
-            <article>
-              <Routes>
-                <Route path="/" element={<Utilisateur />}/>
-                <Route path="/programmes" element={<Programmes />} />
-                <Route path="/exercices" element={<Exercices />} />
-                <Route path="/seances" element={<Seances />} />
-                <Route path="/home-page" element={<HomePage />} />
-              </Routes>
-            </article>
+              <div>
+                <BurgerMenu />
+              <article>
+                <Routes>
+                  <Route path="/" element={<Utilisateur />}/>
+                  <Route path="/programmes" element={<Programmes />} />
+                  <Route path="/exercices" element={<Exercices />} />
+                  <Route path="/seances" element={<Seances />} />
+                  <Route path="/home-page" element={<HomePage />} />
+                </Routes>
+              </article>
+              </div>
           </QueryClientProvider>
         </BrowserRouter>
     

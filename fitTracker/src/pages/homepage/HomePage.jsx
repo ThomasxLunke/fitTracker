@@ -24,7 +24,7 @@ function HomePage() {
                     </div>
 
                     <div className='w-1/2 mt-6'>
-                        <Input label="Password" className=''  {...register("pass")} />
+                        <Input label="Password" className='' {...register("pass")} />
                     </div>
                     
             
@@ -46,7 +46,12 @@ function HomePage() {
                     </div>
 
                     <div className='w-1/2 mt-6'>
-                        <Input label="Password" className=''  {...register("password")} />
+                        <Input label="Password" className=''  {...register("password",{
+                            minLength: {
+                                value:6,
+                                message:"Mot de passe trop court"
+                            },
+                        })} />
                     </div>
                     
                 
