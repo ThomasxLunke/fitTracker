@@ -1,5 +1,4 @@
-import React from 'react'
-import axios from 'axios';
+import React, { useState } from 'react'
 
 import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
@@ -11,6 +10,9 @@ import Seances from './pages/seance/Seances';
 import HomePage from './pages/homepage/HomePage';
 import Utilisateur from './pages/utilisateur/Utilisateur';
 import BurgerMenu from './pages/components/BurgerMenu';
+import AuthContext from './context/authContext';
+import PrivateRoute from './context/PrivateRoute.jsx';
+import login from './pages/homepage/fetch/login';
 
 //import { ThemeProvider } from "@material-tailwind/react";
 
@@ -25,36 +27,44 @@ const queryClient = new QueryClient({
   }
 })
 
-function isLoggedIn(){
-  if (axios.defaults.headers.common['Authorization'])
-  {
-    return true
-  }
-  return false
-
-}
-
 const App = () => {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(login.isLoggedIn)
+
+  //console.log(isLoggedIn)
+  
   return (
     <div className="w-100%">
-      
+      <AuthContext.Provider
+        value={{
+          isLoggedIn,
+          setIsLoggedIn
+        }}
+      >
         <BrowserRouter>
           <QueryClientProvider client={queryClient}>
-              <div>
-                <BurgerMenu />
+            <div>
+              {
+                isLoggedIn && <BurgerMenu />
+              }
               <article>
                 <Routes>
-                  <Route path="/" element={<Utilisateur />}/>
-                  <Route path="/programmes" element={<Programmes />} />
-                  <Route path="/exercices" element={<Exercices />} />
-                  <Route path="/seances" element={<Seances />} />
+
                   <Route path="/home-page" element={<HomePage />} />
+
+                  <Route exact path='/' element={<PrivateRoute/>}>
+                    <Route exact path='/' element={<Utilisateur/>}/>
+                    <Route path="/exercices" element={<Exercices />} />
+                    <Route path="/seances" element={<Seances />} />
+                    <Route path="/programmes" element={<Programmes />} />
+                  </Route>
                 </Routes>
               </article>
-              </div>
+            </div>
           </QueryClientProvider>
         </BrowserRouter>
-    
+      </AuthContext.Provider>
+
     </div>
   );
 };

@@ -1,22 +1,38 @@
+import React, {useContext} from 'react';
 
-import React, { useState } from 'react';
 import { Button, Input } from '@material-tailwind/react';
-import registration from './fetch/registration';
 import { useForm } from "react-hook-form"
+import { useNavigate } from "react-router-dom"
+
 import login from './fetch/login';
+import registration from './fetch/registration';
+
+import AuthContext from '../../context/authContext';
+
 
 function HomePage() {
 
+    // eslint-disable-next-line no-unused-vars
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const {setIsLoggedIn} = useContext(AuthContext)
+    const navigate = useNavigate()
 
-    const onSubmit = data => login(data);
+    const onSubmit = data => login.login(data).then((e) => {
+        setIsLoggedIn(e)
+        if (e === true)
+            navigate("/programmes")
+
+    })
+    //setIsLoggedIn(true)
+    //redirect("/programmes")
+  
     const onRegister = data => registration(data);
     
     return (
 
         <div className='bg-red-100'>
             <div className='bg-orange-100 mr-auto ml-auto'>
-                <form className='flex flex-col items-center' onSubmit={handleSubmit(onSubmit)}>
+                <form className='flex flex-col items-center'>
                     <h1 className='text-center text-4xl font-bold pb-7 pt-12'>Login</h1>
 
                     <div className='w-1/2 mt-6'>
@@ -34,7 +50,7 @@ function HomePage() {
             </div>
 
             <div className='bg-orange-100 mr-auto ml-auto mt-12'>
-                <form className='flex flex-col items-center' onSubmit={handleSubmit(onSubmit)}>
+                <form className='flex flex-col items-center'>
                     <h1 className='text-center text-4xl font-bold pb-7 pt-12'>Register</h1>
 
                     <div className='w-1/2 mt-6'>
