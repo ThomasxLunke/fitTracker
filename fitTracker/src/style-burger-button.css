@@ -64,6 +64,8 @@ text-decoration: none;
 color: white;
 line-height: 5em;
 padding-left: 3em;
+font-size: x-large;
+
 
 }
 
@@ -77,4 +79,14 @@ padding-left: 3em;
 /* Styling of overlay */
 .bm-overlay {
 background: rgba(0, 0, 0, 0.3);
+}
+
+
+#utilisateur{
+    padding-left: 0;
+}
+
+#utilisateur {
+    color:inherit;
+    text-decoration: none;
 }

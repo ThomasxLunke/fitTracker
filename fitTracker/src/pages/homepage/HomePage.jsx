@@ -21,12 +21,15 @@ function HomePage() {
         setIsLoggedIn(e)
         if (e === true)
             navigate("/programmes")
-
     })
     //setIsLoggedIn(true)
     //redirect("/programmes")
   
-    const onRegister = data => registration(data);
+    const onRegister = data => registration(data).then((e) => {
+        setIsLoggedIn(e)
+        if (e === true)
+            navigate("/programmes")
+    });
     
     return (
 

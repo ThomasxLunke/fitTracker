@@ -11,7 +11,6 @@ async function login(data) {
     })
     .then(response => {
     // Handle success.
-        
         window.localStorage.setItem("authToken", response.data.jwt)
         window.localStorage.setItem("username", response.data.user.username)
         axios.defaults.headers.common['Authorization'] = "Bearer "+response.data.jwt; 
@@ -19,7 +18,7 @@ async function login(data) {
     })
     .catch(error => {
       // Handle error.
-      
+      console.log("There is an error :" + error)
       return false
     });
     
