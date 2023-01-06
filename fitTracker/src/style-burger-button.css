@@ -1,8 +1,8 @@
 /* Position and sizing of burger button */
 .bm-burger-button {
     position: fixed;
-    width: 22px;
-    height: 18px;
+    width: 33px;
+    height: 27px;
     left: 20px;
     top: 36px;
 }
@@ -53,7 +53,6 @@ fill: #373a47;
 /* Wrapper for item list */
 .bm-item-list {
 color: #b8b7ad;
-padding: 0.8em;
 padding-top: 3.5em;
 }
 
@@ -65,15 +64,15 @@ color: white;
 line-height: 5em;
 padding-left: 3em;
 font-size: x-large;
+border-radius:0.5rem;
+transition: background-color 0.5s ease-out 50ms
 
 
 }
 
 .bm-item:hover {
-    color: red;
     text-decoration: underline;
-    
-    
+    background-color: rgb(33, 35, 43);
 }
 
 /* Styling of overlay */

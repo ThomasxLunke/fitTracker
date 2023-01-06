@@ -1,30 +1,55 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import fetchAllExercices from "./fetch/fetchAllExercices"
-//import { Button } from "@material-tailwind/react";
+import ExerciceCard from './components/ExerciceCard';
+
+import {
+    Accordion,
+    AccordionHeader,
+    AccordionBody,
+} from "@material-tailwind/react";
 
 function Exercices() {
+    const [open, setOpen] = useState(0);
+    const handleOpen = (value) => {
+        setOpen(open === value ? 0 : value);
+    };
 
     const [exerciceslist, setExercicesList] = useState([])
-    
     useEffect(() => {
         fetchAllExercices().then(response => {
             setExercicesList(response.data)
         })
-    },[]);
+    }, []);
+
+    const listMuscleCible =["Pectoraux", "Triceps", "Biceps", "Dos", "Ischio", "Quadriceps","Epaules"]
+    listMuscleCible.map((muscleCible) => {
+        console.log(listMuscleCible.indexOf(muscleCible) +1)
+    })
     
     return (
-        <div className='bg-orange-100 mr-auto ml-auto'>
+        <Fragment>
             <h1 className='text-center text-4xl font-bold pb-7 pt-12'>Exercices</h1>
-            <div className='flex flex-col align items-center'>
-                {   
-                    exerciceslist.map((exercice) => (
-                        <div key={exercice.id}>{exercice.attributes.nom}</div>
-                        
+            {
+                    listMuscleCible.map((muscleCible) => (
+                        <Accordion key={muscleCible} className='px-5' open={open === listMuscleCible.indexOf(muscleCible) +1}>
+                            <AccordionHeader  onClick={() => handleOpen(listMuscleCible.indexOf(muscleCible) +1)}>
+                                {muscleCible}
+                            </AccordionHeader>
+                            <AccordionBody  className="inline">
+                                <div className='flex flex-row align justify-start flex-wrap'>
+                                    {
+                                        exerciceslist.map((exercice) => (
+                                             muscleCible.toUpperCase()===exercice.attributes.muscleCible.toUpperCase() &&
+                                            <ExerciceCard key={exercice.id} id={exercice.id} nom={exercice.attributes.nom} muscleCible={exercice.attributes.muscleCible} /> 
+                                        ))
+                                    }
+                                </div>
+                            </AccordionBody>
+                        </Accordion>
                     ))
-                }
-            </div>
-        </div>
+            }
+        </Fragment>
     );
 }
 

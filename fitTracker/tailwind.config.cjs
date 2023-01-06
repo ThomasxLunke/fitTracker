@@ -8,7 +8,7 @@ module.exports = withMT({
   "./src/**/*.{vue,js,ts,jsx,tsx}"
 ],
   theme: {
-    extend: {},
+    extend: {}
   },
   plugins: [],
 });
