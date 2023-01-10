@@ -45,8 +45,6 @@ function HomePage() {
                     <div className='w-1/2 mt-6'>
                         <Input label="Password" className='' {...register("pass")} />
                     </div>
-                    
-            
                     <Button className='mt-6 mb-5' onClick={handleSubmit(onSubmit)}>LOGIN</Button>
 
                 </form>
@@ -72,10 +70,7 @@ function HomePage() {
                             },
                         })} />
                     </div>
-                    
-                
                     <Button className='mt-6 mb-5' onClick={handleSubmit(onRegister)}>REGISTER</Button>
-
                 </form>
             </div>
         </div>

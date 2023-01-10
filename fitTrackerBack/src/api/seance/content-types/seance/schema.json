@@ -4,10 +4,11 @@
   "info": {
     "singularName": "seance",
     "pluralName": "seances",
-    "displayName": "seance"
+    "displayName": "seance",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {

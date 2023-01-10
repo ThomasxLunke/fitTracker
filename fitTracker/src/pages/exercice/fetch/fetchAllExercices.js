@@ -22,8 +22,6 @@ return axios
       .get('http://localhost:1337/api/exercices')
       .then(response => {
         // Handle success.
-        console.log('Well done!');
-        console.log('Exercices : ', response.data.data);
         return response.data
       })
       .catch(error => {
