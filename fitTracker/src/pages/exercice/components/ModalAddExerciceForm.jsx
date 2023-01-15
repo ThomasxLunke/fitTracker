@@ -7,12 +7,13 @@ import React from 'react';
 import addExercice from '../fetch/addExercice';
 import fetchAllExercices from '../fetch/fetchAllExercices';
 import AllExercicesContext from '../context/AllExercicesContext';
+import SweetAlertValidation from '../../components/SweetAlertValidation';
 
 function AddExerciceForm({ listMuscleCible }) {
     const [size, setSize] = useState(null);
     const handleOpenModal = (value) => setSize(value);
 
-    const { register, handleSubmit} = useForm();
+    const { register, handleSubmit } = useForm();
 
     const [muscleCible, setMuscleCible] = useState(null);
     const handleChange = (value) => {
@@ -24,6 +25,7 @@ function AddExerciceForm({ listMuscleCible }) {
         data["muscleCible"] = muscleCible
         addExercice(data).then((e) => {
             if (e === true) {
+                SweetAlertValidation(true,"L'exercice a été ajouté avec succès")
                 fetchAllExercices().then(response => {
                     setAllExercices(response.data)
                 })

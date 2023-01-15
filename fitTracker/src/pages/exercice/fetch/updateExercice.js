@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 async function updateExercice(id,nom) {
-    console.log(id, nom)
     // Request API.
     // Add your own code here to customize or restrict how the public can register new users.
     return axios
@@ -12,7 +11,6 @@ async function updateExercice(id,nom) {
     })
       .then(() => {
         // Handle success.
-        console.log('yiiiiiiiii')
         return true
       })
       .catch(error => {

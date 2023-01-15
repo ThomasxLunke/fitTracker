@@ -5,6 +5,7 @@ import { useState, Fragment, useContext, memo } from 'react';
 import deleteExercice from '../fetch/deleteExercice';
 import AllExercicesContext from '../context/AllExercicesContext';
 import fetchAllExercices from '../fetch/fetchAllExercices';
+import SweetAlertValidation from '../../components/SweetAlertValidation';
 
 function ModalDeleteExercice({nomExercice, idExercice}) {
     
@@ -13,13 +14,13 @@ function ModalDeleteExercice({nomExercice, idExercice}) {
     const [, setAllExercices] = useContext(AllExercicesContext);
     const handleDelete = (id) => deleteExercice(id).then((response) => {
         if (response === true) {
+            SweetAlertValidation(true,"L'exercice a été supprimé avec succès")
             fetchAllExercices().then(response => {
                 setAllExercices(response.data)
             })
         }
         handleOpen(null)
     })
-    console.log("yooooo")
     return (
         <div>
             <Fragment>
