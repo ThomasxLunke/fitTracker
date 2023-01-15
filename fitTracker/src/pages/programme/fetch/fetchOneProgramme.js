@@ -1,6 +1,5 @@
 async function fetchOneProgramme({queryKey})
 {
-    console.log("ONNNEEE")
     const res = await fetch(
         `http://localhost:1337/api/programmes/${queryKey[1].name}`
     )

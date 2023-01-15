@@ -1,15 +1,10 @@
 import axios from 'axios';
 
-async function addExercice(data) {
+async function deleteExercice(id) {
     // Request API.
     // Add your own code here to customize or restrict how the public can register new users.
     return axios
-      .post('http://localhost:1337/api/exercices', {
-        data : {
-            nom: data.nom,
-            muscleCible: data.muscleCible.toLowerCase(),
-        }
-        
+      .delete(`http://localhost:1337/api/exercices/${id}`, {
       })
       .then(() => {
         // Handle success.
@@ -23,4 +18,4 @@ async function addExercice(data) {
 }
 
 
-export default addExercice
+export default deleteExercice

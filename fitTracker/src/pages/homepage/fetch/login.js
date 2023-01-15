@@ -3,7 +3,6 @@ import jwtDecode from "jwt-decode"
 
 async function login(data) {
     // Request API.
-    console.log("LOGIN")
     return axios
     .post('http://localhost:1337/api/auth/local', {
         identifier: data.identifier,

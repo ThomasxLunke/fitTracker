@@ -26,6 +26,12 @@
         "quadriceps",
         "epaules"
       ]
+    },
+    "seances": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::seance.seance",
+      "mappedBy": "exercices"
     }
   }
 }

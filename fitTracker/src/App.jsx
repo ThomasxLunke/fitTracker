@@ -13,8 +13,7 @@ import BurgerMenu from './pages/components/BurgerMenu';
 import AuthContext from './context/authContext';
 import PrivateRoute from './context/PrivateRoute.jsx';
 import login from './pages/homepage/fetch/login';
-
-//import { ThemeProvider } from "@material-tailwind/react";
+import AllExercicesContext from './pages/exercice/context/AllExercicesContext';
 
 
 const queryClient = new QueryClient({
@@ -28,11 +27,9 @@ const queryClient = new QueryClient({
 })
 
 const App = () => {
-
-  const [isLoggedIn, setIsLoggedIn] = useState(login.isLoggedIn)
-
-  //console.log(isLoggedIn)
   
+  const allExercices = useState([])
+  const [isLoggedIn, setIsLoggedIn] = useState(login.isLoggedIn);
   return (
     <div className="w-100%">
       <AuthContext.Provider
@@ -43,24 +40,27 @@ const App = () => {
       >
         <BrowserRouter>
           <QueryClientProvider client={queryClient}>
+                   
             <div>
               {
                 isLoggedIn && <BurgerMenu />
               }
               <article>
-                <Routes>
-
-                  <Route path="/home-page" element={<HomePage />} />
-
-                  <Route exact path='/' element={<PrivateRoute/>}>
-                    <Route exact path='/' element={<Utilisateur/>}/>
-                    <Route path="/exercices" element={<Exercices />} />
-                    <Route path="/seances" element={<Seances />} />
-                    <Route path="/programmes" element={<Programmes />} />
-                  </Route>
-                </Routes>
+                <AllExercicesContext.Provider value={allExercices}> 
+                  <Routes>
+                    <Route path="/home-page" element={<HomePage />} />
+                    <Route exact path='/' element={<PrivateRoute/>}>
+                      <Route exact path='/' element={<Utilisateur/>}/>
+                      <Route path="/exercices" element={<Exercices />} />
+                      <Route path="/seances" element={<Seances />} />
+                      <Route path="/programmes" element={<Programmes />} />
+                    </Route>
+                  </Routes>
+                </AllExercicesContext.Provider>
               </article>
+              
             </div>
+            
           </QueryClientProvider>
         </BrowserRouter>
       </AuthContext.Provider>

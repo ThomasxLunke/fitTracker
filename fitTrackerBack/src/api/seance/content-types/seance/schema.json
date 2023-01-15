@@ -14,6 +14,15 @@
   "attributes": {
     "nom": {
       "type": "string"
+    },
+    "exercices": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::exercice.exercice",
+      "inversedBy": "seances"
+    },
+    "exercicesAttribut": {
+      "type": "json"
     }
   }
 }

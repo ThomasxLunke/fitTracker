@@ -1,54 +1,52 @@
-import { Button, Input, Dialog, DialogHeader, DialogBody, DialogFooter, Select, Option } from '@material-tailwind/react';
-import { useState, Fragment } from 'react';
+/* eslint-disable react/prop-types */
+import { Button, Input, Dialog, DialogHeader, DialogBody, Select, Option } from '@material-tailwind/react';
+import { useState, Fragment, useContext } from 'react';
 import { useForm } from "react-hook-form"
 
 import React from 'react';
 import addExercice from '../fetch/addExercice';
 import fetchAllExercices from '../fetch/fetchAllExercices';
+import AllExercicesContext from '../context/AllExercicesContext';
 
-function AddExerciceForm({ listMuscleCible,setExercicesList  }) {
+function AddExerciceForm({ listMuscleCible }) {
     const [size, setSize] = useState(null);
     const handleOpenModal = (value) => setSize(value);
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit} = useForm();
 
-    const [value, setValue] = useState(null);
+    const [muscleCible, setMuscleCible] = useState(null);
     const handleChange = (value) => {
-        setValue(value)
+        setMuscleCible(value)
     };
 
+    const [, setAllExercices] = useContext(AllExercicesContext);
     const onSubmit = data => {
-        data["muscleCible"] = value
-        addExercice(data).then((e) =>{
-            if (e===true)
-            {
-                console.log("yeeeeah")
-                fetchAllExercices().then(response=>{
-                    console.log("yaaaa")
-                    setExercicesList(response.data)
+        data["muscleCible"] = muscleCible
+        addExercice(data).then((e) => {
+            if (e === true) {
+                fetchAllExercices().then(response => {
+                    setAllExercices(response.data)
                 })
             }
             handleOpenModal(null)
-                
+
         })
-        
-    
     }
 
     return (
         <Fragment>
-            <Button onClick={() => handleOpenModal("xl")} className="mt-10" variant="gradient" color='green'>
+            <Button onClick={() => handleOpenModal("xl")} className="mt-10 " variant="gradient" color='green'>
                 Ajouter un exercice
             </Button>
             <Dialog open={size === "xl"} size={size || "md"} handler={handleOpenModal}>
-                <DialogHeader>Ajouter un exercice</DialogHeader>
+                <DialogHeader className='bg-orange-100'> <h6 className='mr-auto ml-auto'> Ajouter un exercice </h6></DialogHeader>
                 <DialogBody >
                     <div className='w-full'>
-                        <form className='flex flex-col items-center'>
-                            <div className='mb-5 w-5/6'>
-                                <Input label="Nom de l'exercice" className='' {...register("nom")} />
+                        <form className='flex flex-col items-center w-full'>
+                            <div className='mb-5'>
+                                <Input label="Nom de l'exercice" {...register("nom")} />
                             </div>
-                            <div className='mb-5 w-5/6'>
+                            <div className='mb-5'>
                                 <Select label="Sélectionner le muscle ciblé" onChange={handleChange} >
                                     {
                                         listMuscleCible.map((muscleCible) => (
@@ -58,7 +56,7 @@ function AddExerciceForm({ listMuscleCible,setExercicesList  }) {
                                 </Select>
                             </div>
 
-                            <Button className='mb-5 w-5/6' color='green' onClick={handleSubmit(onSubmit)} >Ajouter</Button>
+                            <Button className='mb-5 md:w-2/6' color='green' onClick={handleSubmit(onSubmit)} >Ajouter</Button>
                         </form>
                     </div>
                 </DialogBody>

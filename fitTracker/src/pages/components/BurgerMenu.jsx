@@ -11,7 +11,6 @@ function BurgerMenu() {
     function handleStateChange(state) {
         setMenuOpen(state.isOpen)
     }
-    console.log("eeee")
 
     return (
         <div className='nav-bar'>

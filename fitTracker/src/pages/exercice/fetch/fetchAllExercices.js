@@ -19,7 +19,7 @@ async function fetchAllExercices() {
 
 
 return axios
-      .get('http://localhost:1337/api/exercices')
+      .get('http://localhost:1337/api/exercices?populate=*')
       .then(response => {
         // Handle success.
         return response.data
