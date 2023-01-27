@@ -22,11 +22,13 @@ background: #a90000;
 .bm-cross-button {
 height: 24px;
 width: 24px;
+display: none;
 }
 
 /* Color/shape of close button cross */
 .bm-cross {
 background: #bdc3c7;
+
 }
 
 /*
@@ -58,21 +60,14 @@ padding-top: 3.5em;
 
 /* Individual item */
 .bm-item {
-display: inline-block;
-text-decoration: none;
-color: white;
-line-height: 5em;
-padding-left: 3em;
-font-size: x-large;
-border-radius:0.5rem;
-transition: background-color 0.5s ease-out 50ms
-
-
-}
-
-.bm-item:hover {
-    text-decoration: underline;
-    background-color: rgb(33, 35, 43);
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    line-height: 5em;
+    padding-left: 10%;
+    font-size: x-large;
+    border-radius:0.5rem;
+    transition: background-color 0.5s ease-out 50ms
 }
 
 /* Styling of overlay */

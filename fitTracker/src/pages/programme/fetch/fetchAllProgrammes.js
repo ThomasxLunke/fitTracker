@@ -20,8 +20,8 @@ return axios
       .get('http://localhost:1337/api/programmes')
       .then(response => {
         // Handle success.
-        console.log('Well done!');
-        console.log('Programmes : ', response.data.data);
+        //console.log('Well done!');
+        //console.log('Programmes : ', response.data.data);
         return response.data
       })
       .catch(error => {

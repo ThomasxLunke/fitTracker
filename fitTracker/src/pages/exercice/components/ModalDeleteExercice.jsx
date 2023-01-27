@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
 import { Button, Dialog, DialogHeader, DialogBody,IconButton } from '@material-tailwind/react';
-import { useState, Fragment, useContext, memo } from 'react';
+import { React, useState, Fragment, useContext, memo } from 'react';
 import deleteExercice from '../fetch/deleteExercice';
 import AllExercicesContext from '../context/AllExercicesContext';
 import fetchAllExercices from '../fetch/fetchAllExercices';

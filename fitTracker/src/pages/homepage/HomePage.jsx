@@ -13,7 +13,7 @@ import AuthContext from '../../context/authContext';
 function HomePage() {
 
     // eslint-disable-next-line no-unused-vars
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit } = useForm();
     const {setIsLoggedIn} = useContext(AuthContext)
     const navigate = useNavigate()
 

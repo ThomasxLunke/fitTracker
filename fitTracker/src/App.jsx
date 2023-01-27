@@ -31,7 +31,7 @@ const App = () => {
   const allExercices = useState([])
   const [isLoggedIn, setIsLoggedIn] = useState(login.isLoggedIn);
   return (
-    <div className="w-100%">
+    <div className="w-full h-full">
       <AuthContext.Provider
         value={{
           isLoggedIn,
@@ -41,11 +41,14 @@ const App = () => {
         <BrowserRouter>
           <QueryClientProvider client={queryClient}>
                    
-            <div>
-              {
-                isLoggedIn && <BurgerMenu />
-              }
-              <article>
+            <div className='w-full flex'>
+              <div className='w-56'>
+                {
+                  isLoggedIn && <BurgerMenu />
+                }
+              </div>
+              
+              <article className='w-[calc(100%-224px)]'>
                 <AllExercicesContext.Provider value={allExercices}> 
                   <Routes>
                     <Route path="/home-page" element={<HomePage />} />

@@ -29,7 +29,7 @@ function Exercices() {
     const listMuscleCible = ["Pectoraux", "Triceps", "Biceps", "Dos", "Ischio", "Quadriceps", "Epaules"]
 
     return (
-        <div className='flex flex-col items-center'>
+        <div className='flex flex-col items-center w-full h-full'>
             <h1 className='text-center text-4xl font-bold pb-7 pt-12'>Exercices</h1>
             <Fragment>
                 {

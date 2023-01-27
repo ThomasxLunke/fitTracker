@@ -37,8 +37,8 @@ function AddExerciceForm({ listMuscleCible }) {
 
     return (
         <Fragment>
-            <Button onClick={() => handleOpenModal("xl")} className="mt-10 " variant="gradient" color='green'>
-                Ajouter un exercice
+            <Button onClick={() => handleOpenModal("xl")} className="mt-10 rounded-none" variant="gradient" color='blue'>
+                Créer un exercice
             </Button>
             <Dialog open={size === "xl"} size={size || "md"} handler={handleOpenModal}>
                 <DialogHeader className='bg-orange-100'> <h6 className='mr-auto ml-auto'> Ajouter un exercice </h6></DialogHeader>
@@ -46,7 +46,7 @@ function AddExerciceForm({ listMuscleCible }) {
                     <div className='w-full'>
                         <form className='flex flex-col items-center w-full'>
                             <div className='mb-5'>
-                                <Input label="Nom de l'exercice" {...register("nom")} />
+                                <Input label="Nom de l'exercice" className='!min-w-full' {...register("nom")} />
                             </div>
                             <div className='mb-5'>
                                 <Select label="Sélectionner le muscle ciblé" onChange={handleChange} >
